@@ -11,27 +11,35 @@ lornt=false;
 
  function xhrRequest(){            
   
+   console.log(this.status)
+   
   if (this.status == 200)
     {
-      return (lornt=true);
+       lornt=true;
     }
   else
     {
-      return (lornt=false);
+      lornt=false;
     }
 }
 
-async function getReq(url){
+  function getReq(url){
   var oReq = new XMLHttpRequest();
-  oReq.addEventListener("load", xhrRequest);
+  oReq.addEventListener("load",  xhrRequest);
   oReq.open("GET", url);
   oReq.send();
 }
 
-const chkstatus =async () => {
+ chkstatus = async () => {
     return new Promise((resolve,reject) => {
       setTimeout(() => {
-        getReq(window.location.href);
+        url= window.location.href;
+        
+        var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load",  xhrRequest);
+  oReq.open("GET", url);
+  oReq.send();
+        
         console.log("chkstatus - LORNT :  "+String(lornt))
         resolve(lornt);
       },3000);
@@ -41,6 +49,7 @@ const chkstatus =async () => {
 chk=false
 
 console.clear()
+/*
 i=0;
 while((i<10) || (chk === false))
   {
@@ -49,4 +58,6 @@ while((i<10) || (chk === false))
     console.log("I :  "+ String(i))
      i=(i+1);
   }
+*/
+chk = await chkstatus();
 console.log(chk)
