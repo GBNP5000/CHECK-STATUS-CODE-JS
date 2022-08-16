@@ -9,7 +9,7 @@
 
 lornt=false;
 
- function xhrRequest(){            
+  function xhrRequest(){            
   
    console.log(this.status)
    
@@ -34,7 +34,7 @@ lornt=false;
     return new Promise((resolve,reject) => {
       setTimeout(() => {
         url= window.location.href;
-        
+       
         var oReq = new XMLHttpRequest();
   oReq.addEventListener("load",  xhrRequest);
   oReq.open("GET", url);
